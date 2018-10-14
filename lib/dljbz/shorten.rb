@@ -10,7 +10,7 @@ module Dljbz
     #
     def initialize(long_url)
       modify_headers('Content-Type' => 'application/json')
-      options = {"long_url" => long_url}.to_json
+      options = {"long_url" => long_url}
       resp = post(API_URL, :body => options)
       if resp.code == 200 or resp.code == 201
         self.short_url  = resp['short_url']
