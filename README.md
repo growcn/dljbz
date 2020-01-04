@@ -18,11 +18,14 @@ Or install it yourself as:
 
 ## Usage
 
+create rails file: config/initializers/dljbz.rb
+```
+  Dljbz.api_key = 'api_key' # from: http://dlj.bz/dashboard/api_key
+```
 
 ```
-  url = Dljbz.shorten('http://51qiangda.com')
-  url.short_url
-  => "http://dlj.bz/51qd"
+  url = Dljbz::V2::Short.request('http://www.sina.com.cn')
+  => {"short"=>"http://dlj.bz/H0Jo6e", "url"=>"http://www.sina.com.cn"}
 ```
 
 ## Contributing

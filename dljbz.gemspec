@@ -13,13 +13,17 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://github.com/growcn/dljbz"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0")
+  # spec.files         = `git ls-files -z`.split("\x0")
+  spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
+    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  end
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
-  spec.add_dependency "httparty"
-  spec.add_dependency(%q<json>, [">= 1.4.6"])  
+  spec.add_development_dependency "pry" if ENV['PRY']
+  spec.add_dependency "rest-client"
+  spec.add_dependency(%q<json>, [">= 1.4.6"])
 end
