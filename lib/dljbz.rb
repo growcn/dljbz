@@ -1,25 +1,10 @@
-require 'httparty'
-require 'json'
-
-require 'dljbz/base'
-require 'dljbz/utils'
+require 'pry' if ENV['PRY']
+require 'rest-client'
 require 'dljbz/request'
-require 'dljbz/shorten'
+require 'dljbz/v2/short'
 
 module Dljbz
-  extend self
-
-  # Creates a new short URL
-  #
-  #   url = Dljbz.shorten('http://51qiangda.com')
-  #   url.short_url
-  #   => "http://dlj.bz/51qd"
-  #
-  def shorten(url=nil)
-    raise ArgumentError.new("URL to shorten is required") if url.nil? || url.strip.empty?
-    Dljbz::Shorten.new(url)
+  class << self
+    attr_accessor :api_key
   end
-    
-
-
 end
