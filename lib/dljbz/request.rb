@@ -20,7 +20,9 @@ module Dljbz
       end
 
       def parse_path(path)
-        "#{API_URL}#{path}"
+        host = Dljbz.endpoint || API_URL
+
+        "#{host}#{path}"
       end
     end
   end

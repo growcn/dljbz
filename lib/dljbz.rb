@@ -5,6 +5,6 @@ require 'dljbz/v2/short'
 
 module Dljbz
   class << self
-    attr_accessor :api_key
+    attr_accessor :api_key, :endpoint
   end
 end
